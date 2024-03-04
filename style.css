@@ -28,6 +28,15 @@ canvas {
     font-size: 46px;
 }
 
+.bg-blur {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-attachment: fixed;
+    filter: blur(15px);
+}
+
 @keyframes blink {
     0% {
         opacity: 1;

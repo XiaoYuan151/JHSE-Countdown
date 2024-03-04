@@ -38,7 +38,7 @@ if (getURLParameter("clear_mode") == "t") {
 
 window.onload = function starttime() {
     let h1 = document.getElementById('h1')
-    time(h1, '2024/6/25');
+    time(h1, '2024/6/23');
     setTimeout(starttime, 1);
 }
 
@@ -59,19 +59,19 @@ function time(obj, futimg) {
         html = "<br><div>距2024年中考还有：</div><br>";
     }
     if (getURLParameter("no_d") != "t") {
-        html = html + day + "天"
+        html = html + (day < 10 ? "0" + day + "天" : day + "天")
     }
     if (getURLParameter("no_h") != "t") {
-        html = html + hour + "小时"
+        html = html + (hour < 10 ? "0" + hour + "小时" : hour + "小时")
     }
     if (getURLParameter("no_m") != "t") {
-        html = html + minute + "分"
+        html = html + (minute < 10 ? "0" + minute + "分" : minute + "分")
     }
     if (getURLParameter("no_s") != "t") {
-        html = html + second + "秒"
+        html = html + (second < 10 ? "0" + second + "秒" : second + "秒")
     }
     if (getURLParameter("no_ms") != "t") {
-        html = html + millisecond + "毫秒"
+        html = html + (millisecond < 100 ? "0" + millisecond + "毫秒" : millisecond < 10 ? "00" + millisecond + "毫秒" : millisecond + "毫秒")
     }
     if (getURLParameter("text") != undefined) {
         html = html + "<br><span>" + getURLParameter("text") + "</span></br>";

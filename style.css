@@ -60,13 +60,12 @@ canvas {
 
 h1 {
     position: fixed;
-    top: 20%;
+    top: 30%;
     left: 0;
     width: 100%;
     text-align: center;
     transform: translateY(-50%);
     font-family: 'HYWenHei-85W', serif;
-    src: url("fonts/truetype.ttf");
     font-size: 100px;
     color: rgb(255, 50, 0);
     padding: 0 20px;
@@ -90,6 +89,16 @@ h1 span {
     margin-top: 30px;
     font-size: 50px;
     color: rgb(0, 40, 255);
+}
+
+h2 {
+    position: fixed;
+    top: 95%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'HYWenHei-85W', serif;
+    color: rgb(255, 50, 0);
 }
 
 body {

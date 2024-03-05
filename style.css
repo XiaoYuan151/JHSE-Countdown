@@ -12,7 +12,7 @@ video {
     height: 100%;
     object-fit: cover;
     min-height: 800px;
-    filter: blur(5px);
+    filter: blur(15px);
     z-index: -11
 }
 
@@ -21,14 +21,7 @@ canvas {
     margin: 0;
 }
 
-.myclass {
-    letter-spacing: 5px;
-    color: red;
-    font-weight: bold;
-    font-size: 46px;
-}
-
-.bg-blur {
+.blur {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -37,7 +30,7 @@ canvas {
     height: 100%;
     object-fit: cover;
     min-height: 800px;
-    filter: blur(5px);
+    filter: blur(15px);
     z-index: -11
 }
 

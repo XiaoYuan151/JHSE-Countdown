@@ -8,30 +8,34 @@ if (!(getURLParameter("page_title") == undefined)) {
     document.title = "中考倒计时"
 }
 if (!(getURLParameter("vid_bg") == undefined)) {
-    document.getElementById("v1").src = "bgs/" + getURLParameter("vid_bg");
+    document.getElementById("v1").src = "bgs/" + getURLParameter("vid_bg") + ".mp4";
     document.getElementById("v1").play()
 } else {
     document.getElementById("v1").src = "bgs/bg.mp4";
     document.getElementById("v1").play()
 }
 if (!(getURLParameter("aid_bg") == undefined)) {
-    document.getElementById("a1").src = "bgs/" + getURLParameter("aid_bg");
+    document.getElementById("a1").src = "bgs/" + getURLParameter("aid_bg") + ".mp3";
     document.getElementById("a1").play()
 } else {
     document.getElementById("a1").src = "bgs/bg.mp3";
     document.getElementById("a1").play()
 }
 if (!(getURLParameter("pic_bg") == undefined)) {
-    document.getElementById("b1").style.background = "url(bgs/" + getURLParameter("pic_bg") + ") no-repeat fixed"
+    document.getElementById("b1").style.background = "url(bgs/" + getURLParameter("pic_bg") + ".jpg) no-repeat"
+    document.getElementById("b1").style.backgroundSize = "100% 100%"
+    document.getElementById("b1").style.backgroundAttachment = "fixed"
 } else {
-    document.getElementById("b1").style.background = "url(bgs/bg.jpg) no-repeat fixed"
+    document.getElementById("b1").style.background = "url(bgs/bg.jpg) no-repeat"
+    document.getElementById("b1").style.backgroundSize = "100% 100%"
+    document.getElementById("b1").style.backgroundAttachment = "fixed"
 }
 if (getURLParameter("bing_bg") == "t") {
     document.getElementById("v1").src = "";
     document.getElementById("a1").src = "";
-    document.getElementById("b1").style.background = "url(https://api.oneneko.com/v1/bing_today) no-repeat fixed"
-} else {
-    document.getElementById("b1").style.background = "url(bgs/bg.jpg) no-repeat fixed"
+    document.getElementById("b1").style.background = "url(https://api.oneneko.com/v1/bing_today) no-repeat"
+    document.getElementById("b1").style.backgroundSize = "100% 100%"
+    document.getElementById("b1").style.backgroundAttachment = "fixed"
 }
 if (getURLParameter("clear_mode") == "t") {
     document.getElementById("v1").src = "";

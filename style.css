@@ -34,6 +34,16 @@ canvas {
     z-index: -11
 }
 
+.blink {
+    position: fixed;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-50%);
+    animation: blink 1s linear infinite;
+}
+
 @keyframes blink {
     0% {
         opacity: 1;
@@ -47,16 +57,6 @@ canvas {
     100% {
         opacity: 0;
     }
-}
-
-.blink {
-    position: fixed;
-    top: 20%;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    transform: translateY(-50%);
-    animation: blink 1s linear infinite;
 }
 
 @font-face {

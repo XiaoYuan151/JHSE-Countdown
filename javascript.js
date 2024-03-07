@@ -24,6 +24,16 @@ if (!(getURLParameter("aid_bg") == undefined)) {
     document.getElementById("a1").play()
 }
 
+if (!(getURLParameter("pic_bg_url") == undefined)) {
+    document.getElementById("b1").style.background = "url(" + getURLParameter("pic_bg_url") + ") no-repeat"
+    document.getElementById("b1").style.backgroundSize = "100% 100%"
+    document.getElementById("b1").style.backgroundAttachment = "fixed"
+} else {
+    document.getElementById("b1").style.background = "url(bgs/bg.jpg) no-repeat"
+    document.getElementById("b1").style.backgroundSize = "100% 100%"
+    document.getElementById("b1").style.backgroundAttachment = "fixed"
+}
+
 if (!(getURLParameter("pic_bg") == undefined)) {
     document.getElementById("b1").style.background = "url(bgs/" + getURLParameter("pic_bg") + ".jpg) no-repeat"
     document.getElementById("b1").style.backgroundSize = "100% 100%"

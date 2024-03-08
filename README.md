@@ -30,6 +30,10 @@
 | vid_bg     | str   | 设置网页背景视频（所有视频必须在文件夹bgs下） |
 | vid_bg_url | str   | 自定义视频背景URL               |
 
-## License
+## 由 ChatGPT 支持
 
-MIT License
+这个 README 文件是由 ChatGPT 生成的。ChatGPT 是由 OpenAI 开发的一种先进的自然语言处理模型。
+
+## 许可证
+
+本项目使用 AGPL-3.0 许可证。详情请参阅 [LICENSE](LICENSE) 文件。

@@ -1,11 +1,3 @@
-<div align="center">
-  <h1>中考倒计时</h1>
-</div>
-
-中考倒计时，支持毫秒级倒计时（~~增加压迫感~~），可配合Wallpaper Engine等软件使用\
-示例网站：<https://jhsec.xiaoyuan151.xyz> \
-参数示例网站（不显示毫秒）：<https://jhsec.xiaoyuan151.xyz/index.html?no_ms=t>
-
 ### 支持的参数列表：
 
 |     参数     | 支持的数据 | 参数解释                     |
@@ -24,3 +16,12 @@
 |    no_m    |  t/f  | 不显示分                     |
 |    no_h    |  t/f  | 不显示时                     |
 |    no_d    |  t/f  | 不显示天                     |
+| vid_bg_url |  str  | 自定义视频背景URL               |
+| aid_bg_url |  str  | 自定义音频背景URL               |
+| pic_bg_url |  str  | 自定义图片背景URL               |
+
+### 示例网站：
+
+[中考倒计时](https://jhsec.xiaoyuan151.xyz)
+
+参数示例网站（不显示毫秒）：[中考倒计时（无毫秒）](https://jhsec.xiaoyuan151.xyz/index.html?no_ms=t)

@@ -8,12 +8,30 @@ if (!(getURLParameter("page_title") == undefined)) {
     document.title = "中考倒计时"
 }
 
+if (!(getURLParameter("vid_bg_url") == undefined)) {
+    document.getElementById("b1").src = "";
+    document.getElementById("v1").src = getURLParameter("vid_bg_url");
+    document.getElementById("v1").play()
+} else {
+    document.getElementById("v1").src = "bgs/bg.mp4";
+    document.getElementById("v1").play()
+}
+
 if (!(getURLParameter("vid_bg") == undefined)) {
+    document.getElementById("b1").src = "";
     document.getElementById("v1").src = "bgs/" + getURLParameter("vid_bg") + ".mp4";
     document.getElementById("v1").play()
 } else {
     document.getElementById("v1").src = "bgs/bg.mp4";
     document.getElementById("v1").play()
+}
+
+if (!(getURLParameter("aid_bg_url") == undefined)) {
+    document.getElementById("a1").src = getURLParameter("aid_bg_url");
+    document.getElementById("a1").play()
+} else {
+    document.getElementById("a1").src = "bgs/bg.mp3";
+    document.getElementById("a1").play()
 }
 
 if (!(getURLParameter("aid_bg") == undefined)) {
@@ -25,6 +43,8 @@ if (!(getURLParameter("aid_bg") == undefined)) {
 }
 
 if (!(getURLParameter("pic_bg_url") == undefined)) {
+    document.getElementById("v1").src = "";
+    document.getElementById("a1").src = "";
     document.getElementById("b1").style.background = "url(" + getURLParameter("pic_bg_url") + ") no-repeat"
     document.getElementById("b1").style.backgroundSize = "100% 100%"
     document.getElementById("b1").style.backgroundAttachment = "fixed"
@@ -35,6 +55,8 @@ if (!(getURLParameter("pic_bg_url") == undefined)) {
 }
 
 if (!(getURLParameter("pic_bg") == undefined)) {
+    document.getElementById("v1").src = "";
+    document.getElementById("a1").src = "";
     document.getElementById("b1").style.background = "url(bgs/" + getURLParameter("pic_bg") + ".jpg) no-repeat"
     document.getElementById("b1").style.backgroundSize = "100% 100%"
     document.getElementById("b1").style.backgroundAttachment = "fixed"

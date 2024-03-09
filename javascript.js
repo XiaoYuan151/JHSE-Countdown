@@ -57,7 +57,7 @@ function applySettings() {
     const picBgUpload = getURLParameter("pic_bg_upload");
 
     if (picBgUpload) {
-        setBackgroundImage("https://img.xiaoyuan151.xyz:8080/uploads" + picBgUpload);
+        setBackgroundImage("https://img.xiaoyuan151.xyz:8080/uploads/" + picBgUpload);
     } else if (picBgUrl) {
         setBackgroundImage(picBgUrl);
     } else if (picBg) {

@@ -43,37 +43,40 @@ function setTitle(title) {
 // 应用设置
 function applySettings() {
     const vidBgUrl = getURLParameter("vid_bg_url");
-    const vidBg = getURLParameter("vid_bg");
     const aidBgUrl = getURLParameter("aid_bg_url");
-    const aidBg = getURLParameter("aid_bg");
     const picBgUrl = getURLParameter("pic_bg_url");
-    const picBg = getURLParameter("pic_bg");
     const bingBg = getURLParameter("bing_bg");
     const clearMode = getURLParameter("clear_mode");
 
-    if (vidBgUrl) {
-        setVideoBackground(vidBgUrl);
-    } else if (vidBg) {
-        setVideoBackground("bgs/" + vidBg + ".mp4");
-    } else {
-        setVideoBackground("bgs/bg.mp4");
-    }
-
-    if (aidBgUrl) {
-        setAudioBackground(aidBgUrl);
-    } else if (aidBg) {
-        setAudioBackground("bgs/" + aidBg + ".mp3");
-    } else {
-        setAudioBackground("bgs/bg.mp3");
-    }
-
-    if (picBgUrl) {
-        setBackgroundImage(picBgUrl);
-    } else if (picBg) {
-        setBackgroundImage("bgs/" + picBg + ".jpg");
-    } else if (bingBg === "t") {
+    // 如果启用了 Bing 壁纸，则设置 Bing 壁纸
+    if (bingBg === "t") {
         setBackgroundImage("https://api.oneneko.com/v1/bing_today");
-    } else if (clearMode === "t") {
+    } else {
+        // 如果未启用 Bing 壁纸，则根据设置分别设置视频、音频和图片背景
+        if (vidBgUrl) {
+            setVideoBackground(vidBgUrl);
+        } else {
+            const vidBg = getURLParameter("vid_bg");
+            setVideoBackground(vidBg ? "bgs/" + vidBg + ".mp4" : "bgs/bg.mp4");
+        }
+
+        if (aidBgUrl) {
+            setAudioBackground(aidBgUrl);
+        } else {
+            const aidBg = getURLParameter("aid_bg");
+            setAudioBackground(aidBg ? "bgs/" + aidBg + ".mp3" : "bgs/bg.mp3");
+        }
+
+        if (picBgUrl) {
+            setBackgroundImage(picBgUrl);
+        } else {
+            const picBg = getURLParameter("pic_bg");
+            setBackgroundImage(picBg ? "bgs/" + picBg + ".jpg" : "");
+        }
+    }
+
+    // 如果启用了清除模式，则清除所有背景
+    if (clearMode === "t") {
         const v1 = document.getElementById("v1");
         const a1 = document.getElementById("a1");
         const b1 = document.getElementById("b1");

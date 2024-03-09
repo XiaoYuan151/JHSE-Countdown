@@ -57,7 +57,7 @@ function applySettings() {
     const picBgUpload = getURLParameter("pic_bg_upload");
 
     if (picBgUpload) {
-        setBackgroundImage("https://img.xiaoyuan151.xyz:8080/" + picBgUpload);
+        setBackgroundImage("https://img.xiaoyuan151.xyz:8080/uploads" + picBgUpload);
     } else if (picBgUrl) {
         setBackgroundImage(picBgUrl);
     } else if (picBg) {
@@ -93,7 +93,7 @@ function applySettings() {
 // 开始倒计时
 function startTimer() {
     const h1 = document.getElementById('h1');
-    const targetDate = '2024/6/23';
+    const targetDate = '2024/6/24';
     setInterval(function () {
         updateTimer(h1, targetDate);
     }, 1);

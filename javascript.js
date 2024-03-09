@@ -89,7 +89,7 @@ function applySettings() {
 // 开始倒计时
 function startTimer() {
     const h1 = document.getElementById('h1');
-    const targetDate = '2024/6/23';
+    const targetDate = new Date().getFullYear() + '/6/24'; // 获取当前年份的6月24日作为中考时间
     setInterval(function () {
         updateTimer(h1, targetDate);
     }, 1);
@@ -108,10 +108,25 @@ function updateTimer(obj, targetDate) {
     const seconds = Math.floor(timeInSeconds % 60);
 
     let html = "";
+    let cheerMessage = ""; // 加油标语
+
+    // 根据剩余时间确定加油标语
+    if (days > 100) {
+        cheerMessage = "中考加油！";
+    } else if (days > 50) {
+        cheerMessage = "百日誓师！";
+    } else if (days > 5) {
+        cheerMessage = "冲刺中考！";
+    } else if (days > 0) {
+        cheerMessage = "中考必胜！";
+    } else {
+        cheerMessage = "一切努力，明日揭晓！";
+    }
+
     if (getURLParameter("title")) {
         html += "<br><div>" + getURLParameter("title") + "</div><br>";
     } else {
-        html += "<br><div>距2024年中考还有：</div><br>";
+        html += "<br><div>距" + new Date(targetDate).getFullYear() + "年中考还有：</div><br>";
     }
 
     if (!getURLParameter("no_d")) {
@@ -137,11 +152,11 @@ function updateTimer(obj, targetDate) {
     if (getURLParameter("text")) {
         html += "<br><span>" + getURLParameter("text") + "</span></br>";
     } else {
-        html += "<br><span>中考加油! </span></br>";
+        html += "<br><span>" + cheerMessage + "</span></br>"; // 显示加油标语
     }
 
     if (futureTime <= now) {
-        obj.innerHTML = "<div class='blink'>倒计时结束！</div>";
+        obj.innerHTML = "<div class='blink'>中考已经到来，你的努力不会被辜负，分晓将很快见证！</div>";
     } else {
         obj.innerHTML = html;
     }

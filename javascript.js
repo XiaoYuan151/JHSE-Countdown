@@ -71,7 +71,7 @@ function applySettings() {
             setBackgroundImage(picBgUrl);
         } else {
             const picBg = getURLParameter("pic_bg");
-            setBackgroundImage(picBg ? "bgs/" + picBg + ".jpg" : "");
+            setBackgroundImage(picBg ? "bgs/" + picBg + ".jpg" : "bgs/bg.jpg"); // 设置默认的图片背景为 "bgs/bg.jpg"
         }
     }
 

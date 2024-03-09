@@ -27,7 +27,11 @@ function setAudioBackground(url) {
 // 设置图片背景
 function setBackgroundImage(url) {
     const b1 = document.getElementById("b1");
-    if (b1) {
+    const v1 = document.getElementById("v1");
+    const a1 = document.getElementById("a1");
+    if (b1 && v1 && a1) {
+        v1.src = "";
+        a1.src = "";
         b1.src = "";
         b1.style.background = "url(" + url + ") no-repeat";
         b1.style.backgroundSize = "100% 100%";
@@ -43,53 +47,53 @@ function setTitle(title) {
 // 应用设置
 function applySettings() {
     const vidBgUrl = getURLParameter("vid_bg_url");
+    const vidBg = getURLParameter("vid_bg");
     const aidBgUrl = getURLParameter("aid_bg_url");
+    const aidBg = getURLParameter("aid_bg");
     const picBgUrl = getURLParameter("pic_bg_url");
+    const picBg = getURLParameter("pic_bg");
     const bingBg = getURLParameter("bing_bg");
     const clearMode = getURLParameter("clear_mode");
+    const picBgUpload = getURLParameter("pic_bg_upload");
 
-    // 如果启用了 Bing 壁纸，则设置 Bing 壁纸
-    if (bingBg === "t") {
+    if (picBgUpload) {
+        setBackgroundImage("https://img.xiaoyuan151.xyz:8080/" + picBgUpload);
+    } else if (picBgUrl) {
+        setBackgroundImage(picBgUrl);
+    } else if (picBg) {
+        setBackgroundImage("bgs/" + picBg + ".jpg");
+    } else if (bingBg === "t") {
         setBackgroundImage("https://api.oneneko.com/v1/bing_today");
-    } else {
-        // 如果未启用 Bing 壁纸，则根据设置分别设置视频、音频和图片背景
-        if (vidBgUrl) {
-            setVideoBackground(vidBgUrl);
-        } else {
-            const vidBg = getURLParameter("vid_bg");
-            setVideoBackground(vidBg ? "bgs/" + vidBg + ".mp4" : "bgs/bg.mp4");
-        }
-
-        if (aidBgUrl) {
-            setAudioBackground(aidBgUrl);
-        } else {
-            const aidBg = getURLParameter("aid_bg");
-            setAudioBackground(aidBg ? "bgs/" + aidBg + ".mp3" : "bgs/bg.mp3");
-        }
-
-        if (picBgUrl) {
-            setBackgroundImage(picBgUrl);
-        } else {
-            const picBg = getURLParameter("pic_bg");
-            setBackgroundImage(picBg ? "bgs/" + picBg + ".jpg" : "bgs/bg.jpg"); // 设置默认的图片背景为 "bgs/bg.jpg"
-        }
-    }
-
-    // 如果启用了清除模式，则清除所有背景
-    if (clearMode === "t") {
+    } else if (clearMode === "t") {
         const v1 = document.getElementById("v1");
         const a1 = document.getElementById("a1");
         const b1 = document.getElementById("b1");
         if (v1) v1.src = "";
         if (a1) a1.src = "";
         if (b1) b1.style.background = "";
+    } else {
+        if (vidBgUrl) {
+            setVideoBackground(vidBgUrl);
+        } else if (vidBg) {
+            setVideoBackground("bgs/" + vidBg + ".mp4");
+        } else {
+            setVideoBackground("bgs/bg.mp4");
+        }
+
+        if (aidBgUrl) {
+            setAudioBackground(aidBgUrl);
+        } else if (aidBg) {
+            setAudioBackground("bgs/" + aidBg + ".mp3");
+        } else {
+            setAudioBackground("bgs/bg.mp3");
+        }
     }
 }
 
 // 开始倒计时
 function startTimer() {
     const h1 = document.getElementById('h1');
-    const targetDate = new Date().getFullYear() + '/6/24'; // 获取当前年份的6月24日作为中考时间
+    const targetDate = '2024/6/23';
     setInterval(function () {
         updateTimer(h1, targetDate);
     }, 1);
@@ -108,25 +112,10 @@ function updateTimer(obj, targetDate) {
     const seconds = Math.floor(timeInSeconds % 60);
 
     let html = "";
-    let cheerMessage = ""; // 加油标语
-
-    // 根据剩余时间确定加油标语
-    if (days > 100) {
-        cheerMessage = "中考加油！";
-    } else if (days > 50) {
-        cheerMessage = "百日誓师！";
-    } else if (days > 5) {
-        cheerMessage = "冲刺中考！";
-    } else if (days > 0) {
-        cheerMessage = "中考必胜！";
-    } else {
-        cheerMessage = "一切努力，明日揭晓！";
-    }
-
     if (getURLParameter("title")) {
         html += "<br><div>" + getURLParameter("title") + "</div><br>";
     } else {
-        html += "<br><div>距" + new Date(targetDate).getFullYear() + "年中考还有：</div><br>";
+        html += "<br><div>距2024年中考还有：</div><br>";
     }
 
     if (!getURLParameter("no_d")) {
@@ -152,11 +141,19 @@ function updateTimer(obj, targetDate) {
     if (getURLParameter("text")) {
         html += "<br><span>" + getURLParameter("text") + "</span></br>";
     } else {
-        html += "<br><span>" + cheerMessage + "</span></br>"; // 显示加油标语
+        html += "<br><span>中考加油! </span></br>";
     }
 
     if (futureTime <= now) {
         obj.innerHTML = "<div class='blink'>中考已经到来，你的努力不会被辜负，分晓将很快见证！</div>";
+    } else if (days <= 100) {
+        obj.innerHTML = "<div class='blink'>百日誓师！</div>";
+    } else if (days <= 50) {
+        obj.innerHTML = "<div class='blink'>冲刺中考！</div>";
+    } else if (days <= 5) {
+        obj.innerHTML = "<div class='blink'>中考必胜！</div>";
+    } else if (days <= 1) {
+        obj.innerHTML = "<div class='blink'>一切努力，明日揭晓！</div>";
     } else {
         obj.innerHTML = html;
     }

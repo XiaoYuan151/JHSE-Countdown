@@ -14,7 +14,7 @@
 |---------------|-------|-----------------------------------------------------------------------------------|
 | aid_bg        | str   | 设置网页背景音乐（所有音乐必须在文件夹bgs下）                                                          |
 | aid_bg_url    | str   | 自定义音频背景URL                                                                        |
-| aid_bg_upload | str   | 通过已在[https://img.xiaoyuan151.xyz:8080](https://img.xiaoyuan151.xyz:8080)上传的音频设置背景 |
+| aid_bg_upload | str   | 通过已在[https://img.xiaoyuan151.top:8080](https://img.xiaoyuan151.top:8080)上传的音频设置背景 |
 | bing_bg       | t/f   | 启用Bing每日壁纸                                                                        |
 | clear_mode    | t/f   | 启用纯净模式（仅显示倒计时）                                                                    |
 | hide_cadpa    | t/f   | 不显示CADPA（适龄提示）                                                                    |
@@ -26,12 +26,12 @@
 | page_title    | str   | 设置网页标题                                                                            |
 | pic_bg        | str   | 设置网页背景图片（所有图片必须在文件夹bgs下）                                                          |
 | pic_bg_url    | str   | 自定义图片背景URL                                                                        |
-| pic_bg_upload | str   | 通过已在[https://img.xiaoyuan151.xyz:8080](https://img.xiaoyuan151.xyz:8080)上传的图片设置背景 |
+| pic_bg_upload | str   | 通过已在[https://img.xiaoyuan151.top:8080](https://img.xiaoyuan151.top:8080)上传的图片设置背景 |
 | text          | str   | 设置文本（如“中考加油!”）                                                                    |
 | title         | str   | 设置标题文本（如“距中考还有：”）                                                                 |
 | vid_bg        | str   | 设置网页背景视频（所有视频必须在文件夹bgs下）                                                          |
 | vid_bg_url    | str   | 自定义视频背景URL                                                                        |
-| vid_bg_upload | str   | 通过已在[https://img.xiaoyuan151.xyz:8080](https://img.xiaoyuan151.xyz:8080)上传的视频设置背景 |
+| vid_bg_upload | str   | 通过已在[https://img.xiaoyuan151.top:8080](https://img.xiaoyuan151.top:8080)上传的视频设置背景 |
 
 ## 由 ChatGPT 支持
 

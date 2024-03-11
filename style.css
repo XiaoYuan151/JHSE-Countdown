@@ -52,6 +52,18 @@ canvas {
     }
 }
 
+.cadpa {
+    background-image: url('cadpa.png');
+    background-size: 80%; /* 将图片缩小到原来的80% */
+    background-repeat: no-repeat; /* 取消平铺效果 */
+    width: 102.4px; /* 图片宽度 */
+    height: 130.16px; /* 图片高度 */
+    position: fixed;
+    top: 20px; /* 与顶部的距离 */
+    right: 20px; /* 与右侧的距离 */
+    z-index: 2;
+}
+
 /* 字体样式 */
 @font-face {
     font-family: 'HYWenHei-85W';

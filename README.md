@@ -33,6 +33,10 @@
 | vid_bg_url    | str   | 自定义视频背景URL               |
 | vid_bg_upload | str   | 通过已上传的视频设置背景             |
 
+## 上传背景文件
+
+您可以通过 [http://img.xiaoyuan151.top:8080](http://img.xiaoyuan151.top:8080) 来上传自定义的背景音乐、图片和视频文件。
+
 ## 由 ChatGPT 支持
 
 这个 README 文件是由 ChatGPT 生成的。ChatGPT 是由 OpenAI 开发的一种先进的自然语言处理模型。

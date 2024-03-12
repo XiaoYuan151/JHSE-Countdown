@@ -9,91 +9,81 @@ function setTitle(title) {
     document.title = title;
 }
 
-// 设置视频背景
-function setVideoBackground(url) {
-    const v1 = document.getElementById("v1");
-    if (v1) {
-        v1.src = url;
-        v1.play();
-    }
-}
-
-// 设置音频背景
-function setAudioBackground(url) {
-    const a1 = document.getElementById("a1");
-    if (a1) {
-        a1.src = url;
-        a1.play();
-    }
-}
-
-// 设置图片背景
-function setBackgroundImage(url) {
-    const b1 = document.getElementById("b1");
-    if (b1) {
-        b1.style.background = `url(${url}) no-repeat`;
-        b1.style.backgroundSize = "100% 100%";
-        b1.style.backgroundAttachment = "fixed";
+// 设置视频、音频、图片背景
+function setBackground(type, url) {
+    const element = document.getElementById(type + "1");
+    if (element) {
+        if (type === "b") {
+            element.style.background = `url(${url}) no-repeat`;
+            element.style.backgroundSize = "100% 100%";
+            element.style.backgroundAttachment = "fixed";
+        } else {
+            element.src = url;
+            element.play();
+        }
     }
 }
 
 // 应用设置
 function applySettings() {
+    const settings = {
+        "vid_bg": "bgs/bg.mp4",
+        "aid_bg": "bgs/bg.mp3",
+        "pic_bg": "bgs/bg.jpg"
+    };
+
     const bingBg = getURLParameter("bing_bg");
     const hideCadpa = getURLParameter("hide_cadpa");
     const clearMode = getURLParameter("clear_mode");
+    const page_title = getURLParameter("page_title");
 
-    // 如果启用了 Bing 壁纸，则设置 Bing 壁纸
+    if (page_title) setTitle(page_title);
+
     if (bingBg === "t") {
-        setBackgroundImage("https://api.oneneko.com/v1/bing_today");
+        setBackground("b", "https://api.oneneko.com/v1/bing_today");
     } else {
-        // 如果未启用 Bing 壁纸，则根据设置分别设置视频、音频和图片背景
-        setVideoBackground(getURLParameter("vid_bg_upload") ? `http://img.xiaoyuan151.xyz/uploads/${getURLParameter("vid_bg_upload")}` : getURLParameter("vid_bg_url") || `bgs/${getURLParameter("vid_bg") || 'bg'}.mp4`);
-        setAudioBackground(getURLParameter("aid_bg_upload") ? `http://img.xiaoyuan151.xyz/uploads/${getURLParameter("aid_bg_upload")}` : getURLParameter("aid_bg_url") || `bgs/${getURLParameter("aid_bg") || 'bg'}.mp3`);
-        setBackgroundImage(getURLParameter("pic_bg_upload") ? `http://img.xiaoyuan151.xyz/uploads/${getURLParameter("pic_bg_upload")}` : getURLParameter("pic_bg_url") || `bgs/${getURLParameter("pic_bg") || 'bg'}.jpg`);
+        Object.keys(settings).forEach(type => {
+            const param_upload = type + "_upload";
+            const param_url = type + "_url";
+            const url = getURLParameter(param_upload) ? `http://img.xiaoyuan151.top:8080/uploads/${getURLParameter(param_upload)}` : getURLParameter(param_url) || settings[type];
+            setBackground(type.charAt(0), url);
+        });
     }
 
-// 如果未启用不显示适龄提示，则显示适龄提示徽标
     if (!(hideCadpa === "t")) {
         const cadpa = document.getElementById("cadpa");
-        cadpa.innerHTML = "<div class=\"cadpa\"></div>"
+        if (cadpa) cadpa.innerHTML = "<div class=\"cadpa\"></div>";
     }
-// 如果启用了清除模式，则清除所有背景
+
     if (clearMode === "t") {
-        const v1 = document.getElementById("v1");
-        const a1 = document.getElementById("a1");
-        const b1 = document.getElementById("b1");
-        if (v1) v1.src = "";
-        if (a1) a1.src = "";
-        if (b1) b1.style.background = "";
+        ["v1", "a1", "b1"].forEach(id => {
+            const element = document.getElementById(id);
+            if (element) element.src = (id !== "b1") ? "" : element.style.background = "";
+        });
     }
 }
 
 // 开始倒计时
 function startTimer() {
     const h1 = document.getElementById('h1');
-    const targetDate = new Date().getFullYear() + '/6/24'; // 获取当前年份的6月24日作为中考时间
-    setInterval(function () {
-        updateTimer(h1, targetDate);
-    }, 1);
+    const targetDate = new Date().getFullYear() + '/6/24';
+    setInterval(() => updateTimer(h1, targetDate), 1);
 }
 
 // 更新倒计时
 function updateTimer(obj, targetDate) {
     const now = new Date().getTime();
-    const futureTime = new Date(targetDate).getTime();
-    const msec = futureTime - now;
-    const millisecond = msec % 1000;
+    const msec = new Date(targetDate).getTime() - now;
     const timeInSeconds = msec / 1000;
     const days = Math.floor(timeInSeconds / 86400);
     const hours = Math.floor(timeInSeconds / 3600) % 24;
     const minutes = Math.floor(timeInSeconds % 3600 / 60);
     const seconds = Math.floor(timeInSeconds % 60);
+    const millisecond = msec % 1000;
 
     let html = "";
-    let cheerMessage = ""; // 加油标语
+    let cheerMessage = "";
 
-    // 根据剩余时间确定加油标语
     if (days > 100) cheerMessage = "中考加油！";
     else if (days > 50) cheerMessage = "百日誓师！";
     else if (days > 5) cheerMessage = "冲刺中考！";
@@ -107,11 +97,11 @@ function updateTimer(obj, targetDate) {
     if (!getURLParameter("no_s")) html += (seconds < 10 ? "0" + seconds + "秒" : seconds + "秒");
     if (!getURLParameter("no_ms")) html += (millisecond < 10 ? "00" + millisecond + "毫秒" : millisecond < 100 ? "0" + millisecond + "毫秒" : millisecond + "毫秒");
     html += getURLParameter("text") ? `<br><span>${getURLParameter("text")}</span></br>` : `<br><span>${cheerMessage}</span></br>`;
-    if (futureTime <= now) obj.innerHTML = "<div class='blink'>中考已经到来，你的努力不会被辜负，分晓将很快见证！</div>";
+
+    if (new Date(targetDate).getTime() <= now) obj.innerHTML = "<div class='blink'>中考已经到来，你的努力不会被辜负，分晓将很快见证！</div>";
     else obj.innerHTML = html;
 }
 
-// 当页面加载完成时执行
 window.onload = function () {
     applySettings();
     startTimer();

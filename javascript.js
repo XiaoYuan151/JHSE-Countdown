@@ -36,6 +36,7 @@ function applySettings() {
     const hideCadpa = getURLParameter("hide_cadpa");
     const clearMode = getURLParameter("clear_mode");
     const page_title = getURLParameter("page_title");
+    const picBgUpload = getURLParameter("pic_bg_upload");
 
     if (page_title) setTitle(page_title);
 
@@ -46,7 +47,10 @@ function applySettings() {
             const param_upload = type + "_upload";
             const param_url = type + "_url";
             const url = getURLParameter(param_upload) ? `http://img.xiaoyuan151.top:8080/uploads/${getURLParameter(param_upload)}` : getURLParameter(param_url) || settings[type];
-            setBackground(type.charAt(0), url);
+            // 检查是否启用了 pic_bg_upload，如果是，则跳过设置视频背景和音频背景
+            if (!(picBgUpload === "t" && (type === "vid_bg" || type === "aid_bg"))) {
+                setBackground(type.charAt(0), url);
+            }
         });
     }
 

@@ -1,6 +1,6 @@
 # High School Entrance Examination Countdown
 
-High School Entrance Examination Countdown is a web application that supports millisecond-level countdown and can customize background music, background pictures and background videos. Display content and style can be controlled through parameters.
+High School Entrance Examination Countdown is a web application that supports millisecond-level countdown and can customize background music, background pictures, and background videos. Display content and style can be controlled through parameters.
 
 ## Sample website
 
@@ -10,32 +10,32 @@ Parameter example website (does not display milliseconds): [https://jhsec.xiaoyu
 
 ## Supported parameter list
 
-| Parameters | Supported data | Parameter explanation |
-|---------------|-------|-------------------------- -|
-| aid_bg | str | Set web page background music (all music must be in the folder bgs) |
-| aid_bg_url | str | Custom audio background URL |
-| aid_bg_upload | str | Set background from uploaded audio |
-| bing_bg | t/f | Enable Bing daily wallpaper |
-| clear_mode | t/f | Enable clean mode (only show countdown) |
-| hide_cadpa | t/f | Do not show CADPA (age-appropriate reminder) |
-| no_d | t/f | Do not display day |
-| no_h | t/f | When not displayed |
-| no_m | t/f | Do not display points |
-| no_ms | t/f | Do not display milliseconds |
-| no_s | t/f | Do not display seconds |
-| page_title | str | Set web page title |
-| pic_bg | str | Set web page background image (all images must be in the folder bgs) |
-| pic_bg_url | str | Custom picture background URL |
-| pic_bg_upload | str | Set background from uploaded image |
-| text | str | Set text (such as "Come on for the high school entrance exam!") |
-| title | str | Set the title text (such as "There are still more days before the high school entrance examination:") |
-| vid_bg | str | Set web page background video (all videos must be in the folder bgs) |
-| vid_bg_url | str | Custom video background URL |
-| vid_bg_upload | str | Set background from uploaded video |
+| Parameters   | Supported data | Parameter explanation        |
+|--------------|----------------|------------------------------|
+| aid_bg       | str            | Set webpage background music (all music must be in the folder bgs) |
+| aid_bg_url   | str            | Custom audio background URL  |
+| aid_bg_upload| str            | Set background from uploaded audio |
+| bing_bg      | t/f            | Enable Bing daily wallpaper |
+| clear_mode   | t/f            | Enable clean mode (only show countdown) |
+| hide_cadpa   | t/f            | Do not show CADPA (age-appropriate reminder) |
+| no_d         | t/f            | Do not display day           |
+| no_h         | t/f            | Do not display hour          |
+| no_m         | t/f            | Do not display minutes       |
+| no_ms        | t/f            | Do not display milliseconds |
+| no_s         | t/f            | Do not display seconds       |
+| page_title   | str            | Set webpage title            |
+| pic_bg       | str            | Set webpage background image (all images must be in the folder bgs) |
+| pic_bg_url   | str            | Custom picture background URL|
+| pic_bg_upload| str            | Set background from uploaded image |
+| text         | str            | Set text (such as "Come on for the high school entrance exam!") |
+| title        | str            | Set the title text (such as "There are still more days before the high school entrance examination:") |
+| vid_bg       | str            | Set webpage background video (all videos must be in the folder bgs) |
+| vid_bg_url   | str            | Custom video background URL  |
+| vid_bg_upload| str            | Set background from uploaded video |
 
 ## Upload background file
 
-You can upload customized background music, pictures and video files through [http://img.xiaoyuan151.top:8080](http://img.xiaoyuan151.top:8080).
+You can upload customized background music, pictures, and video files through [http://img.xiaoyuan151.top:8080](http://img.xiaoyuan151.top:8080).
 
 ## Powered by ChatGPT
 

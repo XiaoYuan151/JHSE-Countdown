@@ -1,5 +1,7 @@
 # High School Entrance Examination Countdown
 
+[EN](README.md) | [CN](README_CN.md)
+
 High School Entrance Examination Countdown is a web application that supports millisecond-level countdown and can customize background music, background pictures, and background videos. Display content and style can be controlled through parameters.
 
 ## Sample website
